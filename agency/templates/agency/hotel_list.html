@@ -1,0 +1,186 @@
+{% extends 'agency/base.html' %}
+
+{% block content %}
+
+
+		<div class="container hotels-container">
+
+			<div class="row mt-2 justify-content-between">
+				<div class="col-md-8 text-white align-self-center mb-8 p-8">
+					<h1>Eclipse </h1>
+				</div>
+				<div class="col-md-4">
+					<div class=" form-card">
+						<h3>Find Hotels</h3>
+						<form method=POST action="{% url 'search_hotels' %}">
+							{% csrf_token %}
+							<div class="row form-group">
+								<div class="col-md-12">
+									<input type="search" name="search" id="destination" class="form-control">
+								</div>
+							</div>
+								<div class="row form-group">
+									<div class="col-md-12">
+										<input type="submit" class="btn btn-primary btn-block" value="Search">
+									</div>
+								</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="search-container">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3">
+					<div class="row my-3">
+					</div>
+					<div class="row mt-2 justify-content-between">
+						<div class="filter-card">
+							<h5>Filter</h5>
+							<form action="get">
+								{{ hotel_filter.form }}
+								<div class="row form-group">
+									<div class="col-md-12">
+										<label for="mintopay">Check in</label>
+										<p>
+											<input type="date" name="checkin" id="checkin" class="form-control">
+										</p>
+									</div>
+									<div class="col-md-12">
+										<label for="maxtopay">Check out</label>
+										<p>
+											<input type="date" name="checkout" id="checkout" class="form-control">
+										</p>
+									</div>
+								</div>
+								<div class="row form-group">
+									<div class="col-md-12">
+										<button type="submit" class="btn btn-primary btn-block">Filter</button>
+									</div>
+								</div>
+							</form>
+						</div>
+
+					</div>
+				</div>
+
+
+
+				<div class="col-lg-9  px-4">
+					{% for hotel in hotel %}
+					<div class="row search-card-result">
+						<div class="col-md-3">
+							<img class="card-img-top" src="{{hotel.images.url}}" alt="Card image cap">
+						</div>
+						<div class="col-md-5">
+							<h5>{{ hotel.name }}</h5>
+							<p>{{hotel.location}}</p>
+							<p>
+								<span class="badge badge-primary">{{hotel.stars}}</span> Excellent {{review.name}}</p>
+							<p>
+								<i class="fa fa-bath"></i>
+								<i class="fa fa-phone"></i>
+								<i class="fa fa-wifi"></i>
+								<i class="fa fa-tv"></i>
+								<i class="fas fa-dice"></i>
+							</p>
+						</div>
+						<div class="col-md-2 border-left text-center more-offers">
+							<p>average price</p>
+							<p>
+								<s>{{hotel.price}}</s>
+							</p>
+							<p>best price</p>
+							<p>{{hotel.price}}</p>
+							<p class="border-top additional">More Deals from {{hotel.price}}</p>
+						</div>
+						<div class="col-md-2 border-left text-center more-offers">
+							<h4>
+								<span class="badge badge-success">Top Deal</span>
+							</h4>
+							<div class="text-warning">
+								<p>old price</p>
+								<p>
+									<s>{{hotel.price}}</s>
+								</p>
+
+							</div>
+							<div class="text-success">
+								<p>new price</p>
+								<h5>{{hotel.price}}</h5>
+							</div>
+
+							<div><a class="btn btn-primary" href="{% url 'hotel_detail' pk=hotel.pk %}">View Hotel</a>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					</div>
+				</div>
+			</div>
+	</section>
+
+	<section class="py-4">
+		<div class="container">
+			<div class="row justify-content-center">
+				<nav aria-label="Page navigation example">
+					<ul class="pagination">
+						{% if hotel.has_previous %}
+						<li class="page-item">
+							<a class="page-link" href="?page={{ hotel.previous_page_number }}" aria-label="Previous">
+								<span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+							</a>
+						</li>
+						{% endif %}
+						<li class="page-item">
+							<a class="page-link" href="?page=1">1</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="?page=2">2</a>
+						</li>
+						<li class="page-item">
+							<a class="page-link" href="?page=3">3</a>
+						</li>
+						{% if hotel.has_previous %}
+						{% else %}
+						<li class="page-item">
+							<a class="page-link" href="?page={{ hotel.next_page_number }}" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+								<span class="sr-only">Next</span>
+							</a>
+						</li>
+						{% endif %}
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</section>
+
+	<!-- Subscribe Panel -->
+	<section id="subscribe-panel">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 offset-md-2 text-center">
+					<h2>Subscribe</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-8 offset-md-2">
+					<form class="form-inline justify-content-center">
+						<div class="form-group mb-2 col-md-6 col-sm-6">
+							<label for="email" class="sr-only">Email</label>
+							<input type="email" class="form-control" id="email" placeholder="Your Email">
+						</div>
+						<button type="submit" class="btn btn-primary mb-2">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+ {% endblock %}

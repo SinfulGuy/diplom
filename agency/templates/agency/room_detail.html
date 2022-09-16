@@ -1,0 +1,53 @@
+{% extends 'agency/base.html' %}
+
+{% block content %}
+<!-- jumbotron and nav -->
+  <nav class="navbar navbar-expand-lg justify-content-between navbar-dark" role="navigation">
+    <div class="navbar-brand">
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+  </nav>
+  <div class="container">
+    <div class="row mt-2 ">
+      <div class="col-md-7 mt-text text-white align-self-center mb-2">
+        <h1>Eclipse</h1>
+      </div>
+      <div class="col-md-5 col-md-push-1">
+        <div class=" form-card">
+          </br>
+          <h5>{{room_category}} Room</h5>
+          <form id="booking-form" action="" method="POST">
+            {% csrf_token %}
+            <div class="row form-group">
+              <div class="col-md-6">
+                <label for="id_check_in">Check in</label>
+                <p>
+                  <input type="date" name="check_in" id="id_check_in" class="form-control">
+                </p>
+              </div>
+              <div class="col-md-6">
+                <label for="id_check_out">Check out</label>
+                <p>
+                  <input type="date" name="check_out" id="id_check_out" class="form-control">
+                </p>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <input type="submit" class="btn btn-primary btn-block" value="Book the Room">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+{% endblock %}

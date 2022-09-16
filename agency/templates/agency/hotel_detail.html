@@ -1,0 +1,132 @@
+{% extends 'agency/base.html' %}
+
+{% block content %}
+<!-- jumbotron and nav -->
+  <nav class="navbar navbar-expand-lg justify-content-between navbar-dark" role="navigation">
+    <div class="navbar-brand">
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+  </nav>
+  <div class="container">
+    <div class="row mt-2 ">
+      <div class="col-md-7 mt-text text-white align-self-center mb-2">
+        <h1>Eclipse</h1>
+      </div>
+      <div class="col-md-5 col-md-push-1">
+        <div class=" form-card">
+          <h3>{{hotel.name}}</h3>
+          <form action="#">
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="destination">Location: {{ hotel.location }}</label>
+                <i class="fas fa-location-arrow"></i>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="destination">Stars: {{ hotel.stars }}</label>
+                <i class="fas fa-award"></i>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="destination">Types of Rooms: 5</label>
+                <i class="fas fa-bed"></i>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="destination">Reviews: 4</label>
+                <i class="	fas fa-comment"></i>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="destination">Price: {{hotel.price}}</label>
+                <i class="	fas fa-dollar-sign"></i>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="destination">Room Count: {{hotel.room_count}}</label>
+                <i class="	fas fa-couch"></i>
+              </div>
+            </div>
+
+            {% if user.is_authenticated %}
+            <div class="row form-group">
+              <div class="col-md-12">
+                <a class="btn btn-primary btn-block" href="{% url 'room_list' %}">Choose Room</a>
+              </div>
+            </div>
+            {% endif %}
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- suggestions -->
+<div class="section">
+  <div class="container">
+    <div class="row">
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-12">
+        <!-- tabs for sections suggestions -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="top-cities-tab" data-toggle="tab" href="" role="tab" aria-controls="top-cities" aria-selected="true">Gallery</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- Top Cities -->
+          <div class="tab-pane fade show active" id="top-cities" role="tabpanel" aria-labelledby="top-cities-tab">
+            <section class="row">
+              {% for image in hotel.hotel_images.all %}
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="{{image.images.url}}" alt="Card image cap">
+                </div>
+              </article>
+              {% endfor %}
+            </section>
+          </div>
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+            <a class="nav-link active" id="top-cities-tab" data-toggle="tab" href="" role="tab" aria-controls="top-cities" aria-selected="true">Reviews</a>
+            </li>
+          </ul>
+          <section class="row">
+            {% for review in hotel.reviews.all %}
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <h4>{{ review.name }}</h4>
+                  <hr>
+                  {{ review.body }}
+                  </br></br>
+                  {{review.date_add}} - {{review.user}}
+                </div>
+              </article>
+              {% endfor %}
+            </section>
+          {% if user.is_authenticated %}
+          <div class="card-body">
+              <div class="">
+                <a href="{% url 'add_review' hotel.pk %}">
+                  <span class="btn btn-primary">Add Review</span>
+                </a>
+              </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

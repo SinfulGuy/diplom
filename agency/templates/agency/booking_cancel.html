@@ -1,0 +1,281 @@
+{% extends 'agency/base.html' %}
+
+{% block content %}
+<!-- jumbotron and nav -->
+  <nav class="navbar navbar-expand-lg justify-content-between navbar-dark" role="navigation">
+    <div class="navbar-brand">
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+  </nav>
+  <div class="container">
+    <div class="row mt-2 ">
+      <div class="col-md-7 mt-text text-white align-self-center mb-2">
+        <h1>Eclipse</h1>
+      </div>
+      <div class="col-md-5 col-md-push-1">
+        <div class=" form-card">
+          <h3>Are you sure?</h3>
+          <form id="booking-form" action="" method="POST">
+            {% csrf_token %}
+            <div class="row form-group">
+              <div class="col-md-12">
+                <input type="submit" class="btn btn-danger btn-block" value="Cancel the Booking">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- suggestions -->
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 offset-md-2 text-center my-5">
+        <h2>{{room_category}}</h2>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <div class="col-sm-12">
+        <!-- tabs for sections suggestions -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="top-cities-tab" data-toggle="tab" href="#top-cities" role="tab" aria-controls="top-cities" aria-selected="true">Top Cities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="top-destinations-tab" data-toggle="tab" href="#top-destinations" role="tab" aria-controls="top-destinations" aria-selected="false">Top Countries</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="best-offers-tab" data-toggle="tab" href="#best-offers" role="tab" aria-controls="best-offers" aria-selected="false">Best Offers</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- Top Cities -->
+          <div class="tab-pane fade show active" id="top-cities" role="tabpanel" aria-labelledby="top-cities-tab">
+            <section class="row">
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>
+                        <a href="">New York, USA</a>
+                      </h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body ">
+                    <div class="">
+                      <h5>Seoul, South Korea</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>Paris, France</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>Paris, France</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+          </div>
+
+          <!-- Top Countries -->
+          <div class="tab-pane fade" id="top-destinations" role="tabpanel" aria-labelledby="top-destinations-tab">
+            <section class="row">
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>
+                        <a href="">New York, USA</a>
+                      </h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="country.html">
+														<span class="btn btn-primary">Suggest Places</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body ">
+                    <div class="">
+                      <h5>Seoul, South Korea</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="country.html">
+														<span class="btn btn-primary">Suggest Places</span>
+													</a>
+
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>Paris, France</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="country.html">
+														<span class="btn btn-primary">Suggest Places</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>Paris, France</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="country.html">
+														<span class="btn btn-primary">Suggest Places</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+          </div>
+          <!-- Highly Rated -->
+          <div class="tab-pane fade" id="best-offers" role="tabpanel" aria-labelledby="best-offers-tab">
+            <section class="row">
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>
+                        <a href="">New York, USA</a>
+                      </h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body ">
+                    <div class="">
+                      <h5>Seoul, South Korea</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>Paris, France</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://placeimg.com/640/640/arch" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5>Paris, France</h5>
+                      <p>Far far away, behind the word mountains, far from the countries Vokalia..</p>
+                      <p>
+                        <a href="pricing.html">
+														<span class="btn btn-primary">View Offers</span>
+													</a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}

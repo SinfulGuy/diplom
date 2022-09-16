@@ -1,0 +1,91 @@
+{% extends 'agency/base.html' %}
+
+{% block content %}
+<!-- jumbotron and nav -->
+  <nav class="navbar navbar-expand-lg justify-content-between navbar-dark" role="navigation">
+    <div class="navbar-brand">
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+  </nav>
+  <div class="container">
+    <div class="row mt-2 ">
+      <div class="col-md-7 mt-text text-white align-self-center mb-2">
+        <h1>Eclipse</h1>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- suggestions -->
+<div class="section">
+  <div class="container">
+    <div class="row mb-3">
+      <div class="col-sm-12">
+        <!-- tabs for sections suggestions -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link active" id="top-cities-tab" data-toggle="tab" href="#top-cities" role="tab" aria-controls="top-cities" aria-selected="true">Room Categories</a>
+          </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <!-- Top Cities -->
+          <div class="tab-pane fade show active" id="top-cities" role="tabpanel" aria-labelledby="top-cities-tab">
+            <section class="row">
+              {% for room_category, room_url in room_list %}
+              <article class="col-lg-3 col-md-4 col-sm-6 p-2">
+                <div class="card hotel-card">
+                  <img class="card-img-top" src="http://www.bedbreakfast.ee/wp-content/uploads/2016/10/hotel-room.jpg" alt="Card image cap">
+                  <div class="card-body">
+                    <div class="">
+                      <h5 style="text-align:center" href="">{{room_category}}
+                      </h5>
+                      <p>
+                      <i class="fas fa-check"></i>
+                        Сonditioner
+                      <i class="fas fa-check"></i>
+                        Free toiletries
+                      <i class="fas fa-check"></i>
+                        Toilet
+                      <i class="fas fa-check"></i>
+                        Bathtub or shower
+                      <i class="fas fa-check"></i>
+                        Towels
+                      <i class="fas fa-check"></i>
+                        TV
+                      <i class="fas fa-check"></i>
+                        Fan
+                      <i class="fas fa-check"></i>
+                        Tea/Coffee maker
+                      <i class="fas fa-check"></i>
+                        Wake-up service
+                      <i class="fas fa-check"></i>
+                        Upper floors accessible by elevator
+                      <i class="fas fa-check"></i>
+                        Hypoallergenic
+                      <i class="fas fa-check"></i>
+                        Telephone
+                        </p>
+                      <p>
+                        <a href="{{room_url}}">
+                          <span class="btn btn-primary">View Rooms</span>
+                        </a>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              {% endfor %}
+            </section>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endblock %}
